@@ -11,6 +11,9 @@
     "url": "git+https://github.com/clubdell/GraphServer.git"
   },
   "author": "Cesar Eduardo Placido Velazco",
+  "contributors": [
+    "Antonio Campos <geckocore03@outlook.com>"      
+  ],
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/clubdell/GraphServer/issues"
