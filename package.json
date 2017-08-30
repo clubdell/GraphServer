@@ -1,0 +1,24 @@
+{
+  "name": "graph-server",
+  "version": "1.0.0",
+  "description": "The server for API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clubdell/GraphServer.git"
+  },
+  "author": "Cesar Eduardo Placido Velazco",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/clubdell/GraphServer/issues"
+  },
+  "homepage": "https://github.com/clubdell/GraphServer#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.11.2"
+  }
+}
