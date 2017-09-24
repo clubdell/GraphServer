@@ -1,40 +1,33 @@
-import { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLNonNull } from 'graphql';
+import { find, filter } from 'lodash';
+import { makeExecutableSchema } from 'graphql-tools';
 
-// Connection to DB
+// Schema
+const typeDefs = `
+  type User {
+    id: Int!
+    firstName: String
+    lastName: String
+  }
 
-// User Type
-const UserType = new GraphQLObjectType({
-    name: 'User',
-    fields: () => ({
-        // Model data
-    })
-});
+  type Query {
+    user(id: Int!): User
+  }
+`;
 
-// Root Query
-const RootQuery = new GraphQLObjectType({
-    name: 'RootQueryType',
-    fields: {
-        user: {
-            type: UserType,
-            args: {
-                id: { type: GraphQLString }
-            },
-            resolve(parentValue, args) {
-                // TODO: Queries to the DB
-            }
-        }
-    }
-});
+// Dummy data
+const users = [
+  { id: 1, firstName: 'Cesar', lastName: 'Placido' },
+  { id: 2, firstName: 'Gabriel', lastName: 'Islas' }
+];
 
-// Mutation
-const mutation = new GraphQLObjectType({
-    name: 'Mutation',
-    fields: {
-        // TODO: Methods and logic
-    }
-});
+const resolvers = {
+  Query: {
+    user: (_, { id }) => find(users, { id: id })
+  }
+};
 
-const schema = new GraphQLSchema({
-    query: RootQuery,
-    mutation
+
+export const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers
 });
