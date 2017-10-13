@@ -5,24 +5,33 @@ import { makeExecutableSchema } from 'graphql-tools';
 const typeDefs = `
   type User {
     id: Int!
-    firstName: String
-    lastName: String
+    fullName: String!
+    password: String!
   }
 
   type Query {
     user(id: Int!): User
   }
+
+  type Mutation {
+    addUser(id: Int!, fullName: String!, password: String!): User
+    removeUser(id: Int!): User
+    editUser(id: Int!): User
+  }
 `;
 
-// Dummy data
+// Connect to database
 const users = [
-  { id: 1, firstName: 'Cesar', lastName: 'Placido' },
-  { id: 2, firstName: 'Gabriel', lastName: 'Islas' }
+  { id: 201372836, fullName: 'Cesar Placido', password: 'fuewihfowqenfijocew' },
+  { id: 201372853, fullName: 'Gabriel Islas', password: 'jhefqndeedeqdq' }
 ];
 
 const resolvers = {
   Query: {
     user: (_, { id }) => find(users, { id: id })
+  },
+  Mutation: {
+    // TODO: Add methods logic
   }
 };
 
