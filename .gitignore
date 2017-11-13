@@ -51,6 +51,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-# Lock file include by NPM 5.x
-package-lock.json
